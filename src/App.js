@@ -10,7 +10,7 @@ function App() {
     { id: 'e4', title: 'Birthday present', amount: 39.99, date: new Date(2023, 8, 30) }
   ];
 
-  const addExpenseHandler = (newExpenseData) => {
+  const getExpenseData = (newExpenseData) => {
 
     const expenseDate = {
       ...newExpenseData
@@ -23,7 +23,7 @@ function App() {
 
   return (
     <div className="App">
-      <NewExpense toAppComponent={addExpenseHandler} />
+      <NewExpense toAppComponent={getExpenseData} />
       <Expenses expenses={expenses} />
     </div>
   );
