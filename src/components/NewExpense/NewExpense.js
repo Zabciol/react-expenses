@@ -11,13 +11,13 @@ const NewExpense = (props) => {
             id: Math.random().toString()
         };
         //Wysyłamy dane do rodzica:
-        props.toAppComponent(expenseDate);
+        props.onSaveExpenseData(expenseDate);
         console.log('Sent to App Component')
     };
 
     return (
         <div className='new-expense'>
-            <ExpenseForm toNewExpenseComponent={saveExpenseData} />
+            <ExpenseForm onSaveExpenseData={saveExpenseData} />
         </div>
     )
 }

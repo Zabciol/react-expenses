@@ -28,7 +28,7 @@ const ExpenseForm = (props) => {
             date: new Date(enteredDate)
         }
         //Wysyłamy dane do rodzica:
-        props.toNewExpenseComponent(expenseDate);
+        props.onSaveExpenseData(expenseDate);
         console.log('Sent to NewExpense Component')
         //Zerowanie danych w formularzu:
         setEnteredTittle('')
