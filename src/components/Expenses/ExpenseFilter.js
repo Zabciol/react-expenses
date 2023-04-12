@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-
-import './ExpenseFilter.css';
+import './CSS/ExpenseFilter.css';
 
 const ExpensesFilter = (props) => {
 
     const selectedYear = (event) => {
-        props.toExpenses(event.target.value)
+        props.saveSelectedYear(event.target.value)
     }
 
     return (
