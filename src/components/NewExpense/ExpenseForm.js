@@ -19,23 +19,52 @@ const ExpenseForm = (props) => {
         setEnteredDate(event.target.value)
     }
 
+    const [respond, setRespond] = useState('')
+
+
+    const cancelForm = () => {
+        setEnteredTittle('')
+        setEnteredAmount('')
+        setEnteredDate('')
+
+        props.hideForm()
+    }
+
+    const isFilledCorrect = (expenseData) => {
+        if (expenseData.title != '' &&
+            expenseData.date.toString() != 'Invalid Date' &&
+            expenseData.amount != '') {
+            console.log("poprawne dane")
+            return true;
+        }
+        else {
+            console.log("błędne dane")
+            return false
+        }
+    }
+
+
     const submitHandler = (event) => {
         event.preventDefault();//pomija przeładowanie strony po wysłaniu formularza
 
-        const expenseDate = {
+        const expenseData = {
             title: enteredTittle,
             amount: enteredAmount,
             date: new Date(enteredDate)
         }
-        //Wysyłamy dane do rodzica:
-        props.onSaveExpenseData(expenseDate);
-        console.log('Sent to NewExpense Component')
-        //Zerowanie danych w formularzu:
-        setEnteredTittle('')
-        setEnteredAmount('')
-        setEnteredDate('')
-    }
 
+        if (isFilledCorrect(expenseData)) {
+            //Wysyłamy dane do rodzica:
+            props.onSaveExpenseData(expenseData);
+            console.log('Sent to NewExpense Component')
+            cancelForm()
+        }
+        else {
+            setRespond('Complete form')
+        }
+        //Zerowanie danych w formularzu:
+
+    }
 
     return (
         <form onSubmit={submitHandler}>
@@ -60,9 +89,15 @@ const ExpenseForm = (props) => {
                         value={enteredDate}
                         onChange={dateChangeHandler} />
                 </div>
+                <div className='new-expense__control'>
+                    <div>
+                        <h2>{respond}</h2>
+                    </div>
+                </div>
             </div>
             <div className='new-expense__actions'>
-                <button type='submit' >Add Expense</button>
+                <button onClick={cancelForm}>Cancel</button>
+                <button type='submit'>Add Expense</button>
             </div>
         </form>
     )

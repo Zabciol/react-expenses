@@ -20,9 +20,19 @@
     width: 20rem;
     max-width: 100%;
   }
+
+  .new-expense__control div {
+    font-weight: bold;
+    width: 20rem;
+  }
+  .new-expense__control div h2{
+    margin: 0;
+    margin-top: 2rem;
+  }
   
   .new-expense__actions {
     text-align: right;
   }
+
 
   

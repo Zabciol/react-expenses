@@ -1,9 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './NewExpense.css'
 import ExpenseForm from './ExpenseForm'
 
 
 const NewExpense = (props) => {
+
+
+    const [form, setForm] = useState(false)
+
+    const showForm = () => {
+        setForm(true)
+    }
+
+    const hideForm = () => {
+        setForm(false)
+    }
 
     const saveExpenseData = (newExpenseData) => {
         const expenseDate = {
@@ -17,7 +28,14 @@ const NewExpense = (props) => {
 
     return (
         <div className='new-expense'>
-            <ExpenseForm onSaveExpenseData={saveExpenseData} />
+
+            {form === false ?
+                (<button onClick={showForm}>Add Expense</button>) :
+                (<ExpenseForm
+                    onSaveExpenseData={saveExpenseData}
+                    hideForm={hideForm}
+                />)}
+
         </div>
     )
 }
