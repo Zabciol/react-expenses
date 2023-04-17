@@ -4,8 +4,10 @@ const ExpenseInput = (props) => {
 
     const [enteredData, setEnteredData] = useState('')
     const ChangeHandler = (event) => {
-        props.onSave(event.target.value)
+        setEnteredData(event.target.value)
+
     }
+    props.onSave(props.title.toLowerCase(), enteredData)
 
     return (
         <div className='new-expense__control'>

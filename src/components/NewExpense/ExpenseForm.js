@@ -15,25 +15,17 @@ const ExpenseForm = (props) => {
         props.hideForm()
     }
 
-    const onSaveTittle = (data) => {
-
-        expenseData = {
-            ...expenseData,
-            title: data
-        }
-    }
-    const onSaveAmount = (data) => {
-
-        expenseData = {
-            ...expenseData,
-            amount: data
-        }
-    }
-    const onSaveDate = (data) => {
-
-        expenseData = {
-            ...expenseData,
-            date: new Date(data)
+    const onSaveAll = (name, data) => {
+        if (name == 'date') {
+            expenseData = {
+                ...expenseData,
+                date: new Date(data)
+            }
+        } else {
+            expenseData = {
+                ...expenseData,
+                [name]: data
+            }
         }
     }
 
@@ -42,6 +34,7 @@ const ExpenseForm = (props) => {
             expenseData.date.toString() != 'Invalid Date' &&
             expenseData.amount != '') {
             console.log("correct data")
+            console.log(expenseData)
             return true;
         }
         else {
@@ -68,9 +61,9 @@ const ExpenseForm = (props) => {
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
-                <ExpenseInput type={'text'} title={'Title'} onSave={onSaveTittle} />
-                <ExpenseInput type={'number'} title={'Amount'} onSave={onSaveAmount} />
-                <ExpenseInput type={'date'} title={'Date'} onSave={onSaveDate} />
+                <ExpenseInput type={'text'} title={'Title'} onSave={onSaveAll} />
+                <ExpenseInput type={'number'} title={'Amount'} onSave={onSaveAll} />
+                <ExpenseInput type={'date'} title={'Date'} onSave={onSaveAll} />
                 <div className='new-expense__control'>
                     <div>
                         <h2>{respond}</h2>
