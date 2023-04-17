@@ -29,25 +29,22 @@ const ExpenseForm = (props) => {
         }
     }
 
-    const isFilledCorrect = (expenseData) => {
-        if (expenseData.title.trim() != '' &&
-            expenseData.date.toString() != 'Invalid Date' &&
-            expenseData.amount != '') {
-            console.log("correct data")
-            console.log(expenseData)
-            return true;
+    const isCorrect = (name) => {
+        if (expenseData[name] === '' || expenseData[name].toString() === 'Invalid Date') {
+            document.getElementById(name).classList.add('incorrect')
+            console.log(name + 'niepoprawne')
+            return false
         }
         else {
-            console.log("incorrect data")
-            return false
+            document.getElementById(name).classList.remove('incorrect')
+            return true
         }
     }
 
     const submitHandler = (event) => {
         event.preventDefault();//pomija przeładowanie strony po wysłaniu formularza
 
-        if (isFilledCorrect(expenseData)) {
-            //Wysyłamy dane do rodzica:
+        if (isCorrect('title') && isCorrect('amount') && isCorrect('date')) {
             props.onSaveExpenseData(expenseData);
             console.log('Sent to NewExpense Component')
             cancelForm()
