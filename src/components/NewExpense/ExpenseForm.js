@@ -1,57 +1,57 @@
 import React, { useState } from 'react'
+import ExpenseInput from './ExpenseInput'
 import './ExpenseForm.css'
 
 const ExpenseForm = (props) => {
-
-
-    const [enteredTittle, setEnteredTittle] = useState('')
-    const tittleChangeHandler = (event) => {
-        setEnteredTittle(event.target.value)
-    }
-
-    const [enteredAmount, setEnteredAmount] = useState('')
-    const amountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value)
-    }
-
-    const [enteredDate, setEnteredDate] = useState('')
-    const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value)
-    }
-
     const [respond, setRespond] = useState('')
 
+    var expenseData = {
+        title: '',
+        amount: '',
+        date: ''
+    }
 
     const cancelForm = () => {
-        setEnteredTittle('')
-        setEnteredAmount('')
-        setEnteredDate('')
-
         props.hideForm()
     }
 
+    const onSaveTittle = (data) => {
+
+        expenseData = {
+            ...expenseData,
+            title: data
+        }
+    }
+    const onSaveAmount = (data) => {
+
+        expenseData = {
+            ...expenseData,
+            amount: data
+        }
+    }
+    const onSaveDate = (data) => {
+
+        expenseData = {
+            ...expenseData,
+            date: new Date(data)
+        }
+    }
+
     const isFilledCorrect = (expenseData) => {
-        if (expenseData.title != '' &&
+        if (expenseData.title.trim() != '' &&
             expenseData.date.toString() != 'Invalid Date' &&
             expenseData.amount != '') {
-            console.log("poprawne dane")
+            console.log("correct data")
             return true;
         }
         else {
-            console.log("błędne dane")
+            console.log("incorrect data")
             return false
         }
     }
 
-
     const submitHandler = (event) => {
         event.preventDefault();//pomija przeładowanie strony po wysłaniu formularza
-
-        const expenseData = {
-            title: enteredTittle,
-            amount: +enteredAmount,
-            date: new Date(enteredDate)
-        }
 
         if (isFilledCorrect(expenseData)) {
             //Wysyłamy dane do rodzica:
@@ -62,33 +62,15 @@ const ExpenseForm = (props) => {
         else {
             setRespond('Complete form')
         }
-        //Zerowanie danych w formularzu:
 
     }
 
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
-                <div className='new-expense__control'>
-                    <label>Title</label>
-                    <input type='text'
-                        value={enteredTittle}
-                        onChange={tittleChangeHandler} />
-                </div>
-                <div className='new-expense__control'>
-                    <label>Amount</label>
-                    <input type='number'
-                        min="0.01" step="0.01"
-                        value={enteredAmount}
-                        onChange={amountChangeHandler} />
-                </div>
-                <div className='new-expense__control'>
-                    <label>Date</label>
-                    <input type='date'
-                        min="2020-01-01" max="2023-12-31"
-                        value={enteredDate}
-                        onChange={dateChangeHandler} />
-                </div>
+                <ExpenseInput type={'text'} title={'Title'} onSave={onSaveTittle} />
+                <ExpenseInput type={'number'} title={'Amount'} onSave={onSaveAmount} />
+                <ExpenseInput type={'date'} title={'Date'} onSave={onSaveDate} />
                 <div className='new-expense__control'>
                     <div>
                         <h2>{respond}</h2>
