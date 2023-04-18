@@ -4,6 +4,7 @@ import './ExpenseForm.css'
 
 const ExpenseForm = (props) => {
     const [respond, setRespond] = useState('')
+    var isValid
 
     var expenseData = {
         title: '',
@@ -32,19 +33,24 @@ const ExpenseForm = (props) => {
     const isCorrect = (name) => {
         if (expenseData[name] === '' || expenseData[name].toString() === 'Invalid Date') {
             document.getElementById(name).classList.add('incorrect')
-            console.log(name + 'niepoprawne')
-            return false
+            isValid = false;
         }
         else {
             document.getElementById(name).classList.remove('incorrect')
-            return true
         }
     }
 
+
+
     const submitHandler = (event) => {
         event.preventDefault();//pomija przeładowanie strony po wysłaniu formularza
+        isValid = true
 
-        if (isCorrect('title') && isCorrect('amount') && isCorrect('date')) {
+        isCorrect('title');
+        isCorrect('amount');
+        isCorrect('date');
+
+        if (isValid) {
             props.onSaveExpenseData(expenseData);
             console.log('Sent to NewExpense Component')
             cancelForm()
@@ -53,7 +59,12 @@ const ExpenseForm = (props) => {
             setRespond('Complete form')
         }
 
+
     }
+
+
+
+
 
     return (
         <form onSubmit={submitHandler}>
