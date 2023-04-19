@@ -4,7 +4,7 @@ import "./CSS/ExpensesList.css"
 
 const ExpensesList = (props) => {
 
-    if (props.items.length == 0) {
+    if (props.items.length === 0) {
         return (<h2 className='expenses-list__fallback'>No results</h2>)
     }
 
@@ -17,6 +17,7 @@ const ExpensesList = (props) => {
                     title={expense.title}
                     amount={expense.amount}
                     date={expense.date}
+                    id={expense.id}
                     onRemoveExpense={props.onRemoveExpense}
                 />
             )}

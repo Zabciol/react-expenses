@@ -27,7 +27,7 @@ function App() {
   }
 
   const removeExpense = (id) => {
-    console.log("remove " + id)
+    console.log("deleted " + id)
     setExpenses(expenses.filter(expense => expense.id !== id))
   }
 
