@@ -18,7 +18,7 @@ const ExpenseForm = (props) => {
     }
 
     const onSaveAll = (name, data) => {
-        if (name == 'date') {
+        if (name === 'date') {
             expenseData = {
                 ...expenseData,
                 date: new Date(data)
