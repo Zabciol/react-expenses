@@ -12,7 +12,8 @@ const ExpenseForm = (props) => {
         date: ''
     }
 
-    const cancelForm = () => {
+    const cancelForm = (event) => {
+        event.preventDefault();
         props.hideForm()
     }
 
@@ -53,7 +54,7 @@ const ExpenseForm = (props) => {
         if (isValid) {
             props.onSaveExpenseData(expenseData);
             console.log('Sent to NewExpense Component')
-            cancelForm()
+            cancelForm(event)
         }
         else {
             setRespond('Complete form')
@@ -61,11 +62,6 @@ const ExpenseForm = (props) => {
 
 
     }
-
-
-
-
-
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>

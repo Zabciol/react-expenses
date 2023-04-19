@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
+
 const SOME_DATE = [
   { id: 'e1', title: 'Birthday present', amount: 39.99, date: new Date(2022, 3, 16) },
   { id: 'e2', title: 'New Car', amount: 50.99, date: new Date(2023, 2, 7) },
@@ -25,11 +26,16 @@ function App() {
     console.log(expenseDate)
   }
 
+  const removeExpense = (id) => {
+    console.log("remove " + id)
+    setExpenses(expenses.filter(expense => expense.id !== id))
+  }
+
 
   return (
     <div className="App">
       <NewExpense onSaveExpenseData={saveExpenseData} />
-      <Expenses expenses={expenses} />
+      <Expenses expenses={expenses} onRemoveExpense={removeExpense} />
     </div>
   );
 }

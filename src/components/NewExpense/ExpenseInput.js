@@ -15,9 +15,10 @@ const ExpenseInput = (props) => {
     props.onSave(props.title.toLowerCase(), enteredData)
 
     return (
-        <div id={props.title.toLowerCase()} className='new-expense__control'>
+        <div className='new-expense__control'>
             <label>{props.title}</label>
             <input type={props.type}
+                id={props.title.toLowerCase()}
                 onChange={ChangeHandler}
             />
         </div>
