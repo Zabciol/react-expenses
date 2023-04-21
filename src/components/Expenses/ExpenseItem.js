@@ -17,11 +17,12 @@ function ExpenseItem(props) {
             <ExpenseDate date={props.date} />
             <div className='expense-item__description'>
                 <h2>{props.title}</h2>
-                <div className='expense-item__price'>${props.amount}</div>
-                <FontAwesomeIcon
-                    icon={faTrash} size="2xl" beat
-                    style={{ color: "#ececec", padding: "0 10 0 0", cursor: 'pointer' }} onClick={deleteSelf} />
-
+                <div className='expense-item__description-price__delete'>
+                    <div className='expense-item__price'>${props.amount}</div>
+                    <FontAwesomeIcon
+                        icon={faTrash} size="2xl"
+                        style={{ color: "#ececec", padding: "0 10 0 0", cursor: 'pointer' }} onClick={deleteSelf} />
+                </div>
             </div>
         </Card>
     )

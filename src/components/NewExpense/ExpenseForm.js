@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import ExpenseInput from './ExpenseInput'
 import './ExpenseForm.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 
 const ExpenseForm = (props) => {
     const [respond, setRespond] = useState('')
@@ -75,7 +77,8 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className='new-expense__actions'>
-                <button onClick={cancelForm}>Cancel</button>
+                <button onClick={cancelForm}>
+                    <FontAwesomeIcon icon={faRightFromBracket} rotation={180} size="lg" /></button>
                 <button type='submit'>Add Expense</button>
             </div>
         </form>

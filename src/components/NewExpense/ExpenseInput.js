@@ -11,6 +11,7 @@ const ExpenseInput = (props) => {
             document.getElementById(props.title.toLowerCase()).classList.remove('incorrect')
         else
             document.getElementById(props.title.toLowerCase()).classList.add('incorrect')
+
     }
     props.onSave(props.title.toLowerCase(), enteredData)
 
