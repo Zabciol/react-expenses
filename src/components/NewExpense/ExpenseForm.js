@@ -53,6 +53,7 @@ const ExpenseForm = (props) => {
         isCorrect('amount');
         isCorrect('date');
 
+
         if (isValid) {
             props.onSaveExpenseData(expenseData);
             console.log('Sent to NewExpense Component')
