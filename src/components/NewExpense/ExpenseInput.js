@@ -3,8 +3,14 @@ import React, { useState } from 'react'
 const ExpenseInput = (props) => {
 
     const [enteredData, setEnteredData] = useState('')
+    const [isValid, setValid] = useState(true)
     const ChangeHandler = (event) => {
         setEnteredData(event.target.value)
+
+        if (event.target.value.toString().trim().length > 0)
+            document.getElementById(props.title.toLowerCase()).classList.remove('incorrect')
+        else
+            document.getElementById(props.title.toLowerCase()).classList.add('incorrect')
     }
     props.onSave(props.title.toLowerCase(), enteredData)
 

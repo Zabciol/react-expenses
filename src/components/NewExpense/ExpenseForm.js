@@ -65,9 +65,9 @@ const ExpenseForm = (props) => {
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
-                <ExpenseInput type={'text'} title={'Title'} onSave={onSaveAll} />
-                <ExpenseInput type={'number'} title={'Amount'} onSave={onSaveAll} />
-                <ExpenseInput type={'date'} title={'Date'} onSave={onSaveAll} />
+                <ExpenseInput type={'text'} title={'Title'} onSave={onSaveAll} isCorrect={isCorrect} />
+                <ExpenseInput type={'number'} title={'Amount'} onSave={onSaveAll} isCorrect={isCorrect} />
+                <ExpenseInput type={'date'} title={'Date'} onSave={onSaveAll} isCorrect={isCorrect} />
                 <div className='new-expense__control'>
                     <div>
                         <h2>{respond}</h2>
