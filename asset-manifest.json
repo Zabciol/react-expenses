@@ -1,13 +1,13 @@
 {
   "main.css": "/react-expenses/static/css/main.d7b52412.chunk.css",
-  "main.js": "/react-expenses/static/js/main.b8b8a079.chunk.js",
-  "main.js.map": "/react-expenses/static/js/main.b8b8a079.chunk.js.map",
+  "main.js": "/react-expenses/static/js/main.86a5ea56.chunk.js",
+  "main.js.map": "/react-expenses/static/js/main.86a5ea56.chunk.js.map",
   "static/js/1.45c160e1.chunk.js": "/react-expenses/static/js/1.45c160e1.chunk.js",
   "static/js/1.45c160e1.chunk.js.map": "/react-expenses/static/js/1.45c160e1.chunk.js.map",
   "runtime~main.js": "/react-expenses/static/js/runtime~main.4d114456.js",
   "runtime~main.js.map": "/react-expenses/static/js/runtime~main.4d114456.js.map",
   "static/css/main.d7b52412.chunk.css.map": "/react-expenses/static/css/main.d7b52412.chunk.css.map",
   "index.html": "/react-expenses/index.html",
-  "precache-manifest.081a91ed5f49561168906deed28d822e.js": "/react-expenses/precache-manifest.081a91ed5f49561168906deed28d822e.js",
+  "precache-manifest.27f8e6dd721ec2a1a76ca6e7c93ebe5d.js": "/react-expenses/precache-manifest.27f8e6dd721ec2a1a76ca6e7c93ebe5d.js",
   "service-worker.js": "/react-expenses/service-worker.js"
 }
