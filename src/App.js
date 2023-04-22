@@ -18,6 +18,7 @@ function App() {
 
     setExpenses([newExpenseData, ...expenses]);
 
+
     const expenseDate = {
       ...newExpenseData
     }
