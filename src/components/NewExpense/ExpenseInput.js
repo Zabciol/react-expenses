@@ -18,7 +18,7 @@ const ExpenseInput = (props) => {
     return (
         <div className='new-expense__control'>
             <label>{props.title}</label>
-            <input type={props.type}
+            <input type={props.type} step={'0.01'}
                 id={props.title.toLowerCase()}
                 onChange={ChangeHandler}
             />
